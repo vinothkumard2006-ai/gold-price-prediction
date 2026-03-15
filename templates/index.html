@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Gold Price Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #09db5a, #086b61, #493ebe);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgb(245, 108, 108);
+            padding: 40px;
+            border-radius: 12px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #210439;
+            margin-bottom: 20px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #f0ecec;
+            font-size: 14px;
+        }
+
+        button {
+            background: #f4c117;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #cca120;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #151515;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Gold Price Prediction</h2>
+
+        <form action="/predict" method="post">
+
+            <input type="number" name="year" placeholder="Enter Year" value="{{year if year else ''}}" required>
+
+            <select name="currency">
+                <option value="USD" {% if currency=='USD' %}selected{% endif %}>USD</option>
+                <option value="INR" {% if currency=='INR' %}selected{% endif %}>INR</option>
+                <option value="EUR" {% if currency=='EUR' %}selected{% endif %}>EUR</option>
+                <option value="GBP" {% if currency=='GBP' %}selected{% endif %}>GBP</option>
+                <option value="CNY" {% if currency=='CNY' %}selected{% endif %}>CNY</option>
+                </select>
+            <button type="submit">Predict</button>
+
+        </form>
+
+        <div class="result">
+            {{ prediction }}
+        </div>
+
+    </div>
+
+</body>
+
+</html>
